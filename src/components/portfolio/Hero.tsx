@@ -1,5 +1,8 @@
 import { ArrowRight, Download, Mail, MapPin } from "lucide-react";
 
+const RESUME_URL = `${import.meta.env.BASE_URL}resume.pdf`;
+const PROFILE_URL = `${import.meta.env.BASE_URL}profile.jpg`;
+
 export function Hero() {
   return (
     <section id="top" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
@@ -10,50 +13,64 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-6xl px-6">
-        <div className="flex flex-col items-start gap-6 max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 backdrop-blur px-3 py-1 text-xs font-mono text-muted-foreground">
-            <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-            Available for Data Engineer / Data Scientist roles
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-14 items-center">
+          <div className="flex flex-col items-start gap-6 max-w-3xl order-2 md:order-1">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 backdrop-blur px-3 py-1 text-xs font-mono text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+              Available for Data Engineer / Data Scientist roles
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+              Hi, I'm <span className="text-gradient">Chinmaya</span>.
+              <br />
+              I build data systems that{" "}
+              <span className="text-gradient">scale</span>.
+            </h1>
+
+            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              Data Engineer & Analyst with 4 years of experience designing cloud-scale
+              ETL pipelines and master-data ecosystems for healthcare. Currently pursuing
+              an MS in Data Science at the University at Buffalo.
+            </p>
+
+            <div className="flex items-center gap-3 text-sm text-muted-foreground font-mono">
+              <MapPin className="h-4 w-4 text-primary" />
+              Buffalo, New York
+            </div>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-md bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-95 transition"
+              >
+                View Projects <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href={RESUME_URL}
+                download
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-surface/60 backdrop-blur px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-surface transition"
+              >
+                <Download className="h-4 w-4" /> Download Resume
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold text-foreground hover:text-primary transition"
+              >
+                <Mail className="h-4 w-4" /> Get in touch
+              </a>
+            </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
-            Hi, I'm <span className="text-gradient">Chinmaya</span>.
-            <br />
-            I build data systems that{" "}
-            <span className="text-gradient">scale</span>.
-          </h1>
-
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Data Engineer & Analyst with 4 years of experience designing cloud-scale
-            ETL pipelines and master-data ecosystems for healthcare. Currently pursuing
-            an MS in Data Science at the University at Buffalo.
-          </p>
-
-          <div className="flex items-center gap-3 text-sm text-muted-foreground font-mono">
-            <MapPin className="h-4 w-4 text-primary" />
-            Buffalo, New York
-          </div>
-
-          <div className="flex flex-wrap gap-3 pt-2">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-md bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-95 transition"
-            >
-              View Projects <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="/resume.pdf"
-              download
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-surface/60 backdrop-blur px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-surface transition"
-            >
-              <Download className="h-4 w-4" /> Download Resume
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold text-foreground hover:text-primary transition"
-            >
-              <Mail className="h-4 w-4" /> Get in touch
-            </a>
+          <div className="order-1 md:order-2 relative shrink-0 mx-auto md:mx-0">
+            <div className="absolute -inset-3 rounded-full bg-gradient-primary opacity-30 blur-2xl" />
+            <div className="relative h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 rounded-full overflow-hidden ring-2 ring-primary/40 ring-offset-4 ring-offset-background shadow-glow">
+              <img
+                src={PROFILE_URL}
+                alt="Chinmaya Pasupuleti"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,26 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { ArrowLeft, PenLine } from "lucide-react";
 import { Nav } from "@/components/portfolio/Nav";
 import { Footer } from "@/components/portfolio/Footer";
 
-const TITLE = "Blog — Chinmaya Pasupuleti";
-const DESC =
-  "Writing on data engineering, MDM in healthcare, and lessons from shipping ML in production. Coming soon.";
-
 export const Route = createFileRoute("/blog")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:type", content: "website" },
-    ],
-  }),
   component: BlogPage,
 });
 
 function BlogPage() {
+  useEffect(() => {
+    document.title = "Blog — Chinmaya Pasupuleti";
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Nav />
