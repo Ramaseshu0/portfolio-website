@@ -32,11 +32,8 @@ export function Nav() {
     >
       <nav className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid place-items-center h-9 w-9 rounded-md bg-primary text-primary-foreground font-bold font-mono">
-            CP
-          </span>
-          <span className="hidden sm:block font-semibold tracking-tight">
-            Chinmaya<span className="text-primary">.</span>
+          <span className="font-bold tracking-tight text-sm sm:text-base">
+            Chinmaya Sri Rama Seshu Pasupuleti<span className="text-primary">.</span>
           </span>
         </Link>
 

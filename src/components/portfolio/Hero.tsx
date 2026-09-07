@@ -15,12 +15,14 @@ export function Hero() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-[1.12fr_0.88fr]">
           <div className="relative z-10">
             <div className="mb-7 inline-flex items-center gap-2 border border-primary/30 bg-surface px-3 py-1.5 font-mono text-xs uppercase text-primary">
-              <span className="h-2 w-2 bg-primary" /> Open to data engineering roles
+              <span className="h-2 w-2 bg-primary" /> Open to opportunities
             </div>
-            <p className="mb-4 font-mono text-sm uppercase text-muted-foreground">Data Engineer · Buffalo, New York</p>
             <h1 className="max-w-4xl text-5xl font-bold leading-[1.02] sm:text-6xl md:text-7xl lg:text-[5.4rem]">
-              Chinmaya<br />Sri Rama Seshu<br />Pasupuleti<span className="text-primary">.</span>
+              Data<br />Engineer<span className="text-primary">.</span>
             </h1>
+            <p className="mt-4 font-mono text-sm uppercase text-muted-foreground">
+              Buffalo, New York · 4+ years experience
+            </p>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
               I build reliable data platforms that turn complex healthcare data into analytics-ready systems, measurable decisions, and production-grade intelligence.
             </p>
@@ -35,8 +37,8 @@ export function Hero() {
           </div>
           <div className="relative mx-auto w-full max-w-sm lg:ml-auto">
             <div className="absolute -inset-3 translate-x-5 translate-y-5 border border-primary/35" />
-            <figure className="relative aspect-square overflow-hidden bg-secondary shadow-elevated">
-              <img src="/profile.jpg" alt="Portrait of Chinmaya Sri Rama Seshu Pasupuleti in professional attire" className="h-full w-full object-cover object-[50%_36%] scale-[1.65]" fetchPriority="high" />
+            <figure className="relative aspect-[3/4] overflow-hidden bg-secondary shadow-elevated">
+              <img src="/profile.jpg" alt="Chinmaya Sri Rama Seshu Pasupuleti in professional attire" className="h-full w-full object-cover object-top" fetchPriority="high" />
               <figcaption className="absolute inset-x-0 bottom-0 bg-secondary/90 px-5 py-4 text-secondary-foreground backdrop-blur-sm">
                 <p className="font-mono text-xs uppercase text-accent">4+ years in data engineering</p>
                 <p className="mt-1 text-sm">Healthcare · Cloud · Analytics · ML</p>
