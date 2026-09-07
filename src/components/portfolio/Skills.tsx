@@ -1,94 +1,22 @@
-import { Code2, Database, Cloud, Brain, BarChart3, Wrench } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { SectionHeading } from "./SectionHeading";
 
 const groups = [
-  {
-    icon: Code2,
-    title: "Programming",
-    items: ["Python", "Java", "C", "R", "SQL"],
-  },
-  {
-    icon: Cloud,
-    title: "Data Engineering & ETL",
-    items: ["AWS (S3, EC2, SQS)", "Informatica PowerCenter", "Reltio MDM", "dbt", "AutoSys", "ETL/ELT Pipelines"],
-  },
-  {
-    icon: Database,
-    title: "Databases & Warehousing",
-    items: ["PostgreSQL", "MySQL", "Oracle", "Teradata", "Snowflake", "Star Schema", "Data Modeling"],
-  },
-  {
-    icon: Brain,
-    title: "Big Data & ML",
-    items: ["Apache Spark", "PySpark", "scikit-learn", "XGBoost", "Random Forest", "Logistic Regression", "ROC-AUC"],
-  },
-  {
-    icon: BarChart3,
-    title: "Visualization & BI",
-    items: ["Tableau", "Power BI", "Streamlit", "Matplotlib", "Seaborn", "Data Storytelling"],
-  },
-  {
-    icon: Wrench,
-    title: "Tools & DevOps",
-    items: ["Docker", "Git", "REST APIs", "Postman", "JSON", "Excel"],
-  },
+  ["Languages & analysis", "Python · SQL · Java · Pandas · NumPy · Excel · Statistical Analysis"],
+  ["Data engineering", "ETL/ELT · Informatica PowerCenter · IICS · Reltio MDM · dbt · Airflow · Spark · PySpark"],
+  ["Data platforms", "Snowflake · PostgreSQL · Oracle · Teradata · MySQL · MongoDB · Data Modeling · Star Schema"],
+  ["Cloud & delivery", "AWS S3/SQS/EC2 · Azure · Docker · Git · GitHub Actions · AutoSys · REST APIs"],
+  ["Analytics & BI", "Tableau · Power BI · Streamlit · KPI Dashboards · Data Visualization · Data Storytelling"],
+  ["Applied AI", "LightGBM · XGBoost · scikit-learn · RAG · ChromaDB · SHAP · FastAPI · MCP"],
 ];
 
 export function Skills() {
-  return (
-    <section id="skills" className="py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading
-          eyebrow="02 — Skills"
-          title="The stack I reach for."
-          description="From raw ingestion to ML and dashboards — production-grade tools across the full data lifecycle."
-        />
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {groups.map((g, i) => (
-            <SkillCard key={g.title} {...g} delay={i * 60} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="skills" className="py-20 md:py-28"><div className="mx-auto max-w-6xl px-6">
+    <SectionHeading eyebrow="02 / Capabilities" title="From raw source to decision-ready data." />
+    <div className="grid gap-x-12 gap-y-0 md:grid-cols-2">{groups.map(([title, items], i) => <Skill key={title} title={title} items={items} index={i + 1} />)}</div>
+  </div></section>;
 }
-
-function SkillCard({
-  icon: Icon,
-  title,
-  items,
-  delay,
-}: {
-  icon: typeof Code2;
-  title: string;
-  items: string[];
-  delay: number;
-}) {
+function Skill({ title, items, index }: { title: string; items: string; index: number }) {
   const ref = useReveal();
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className="reveal group rounded-xl border border-border bg-surface/60 backdrop-blur p-6 hover:border-primary/40 hover:shadow-glow transition"
-    >
-      <div className="flex items-center gap-3 mb-4">
-        <div className="grid place-items-center h-10 w-10 rounded-lg bg-gradient-primary text-primary-foreground">
-          <Icon className="h-5 w-5" />
-        </div>
-        <h3 className="font-semibold">{title}</h3>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {items.map((it) => (
-          <span
-            key={it}
-            className="font-mono text-xs px-2.5 py-1 rounded-md bg-accent/40 border border-border text-muted-foreground group-hover:text-foreground transition"
-          >
-            {it}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
+  return <div ref={ref} className="reveal grid grid-cols-[2.25rem_1fr] gap-4 border-t border-border py-6"><span className="font-mono text-xs text-primary">0{index}</span><div><h3 className="font-semibold">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{items}</p></div></div>;
 }

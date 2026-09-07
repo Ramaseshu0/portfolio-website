@@ -3,8 +3,6 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const RESUME_URL = `${import.meta.env.BASE_URL}resume.pdf`;
-
 const links = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
@@ -29,12 +27,12 @@ export function Nav() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all",
-        scrolled ? "glass border-b border-border" : "bg-transparent"
+        scrolled ? "glass border-b border-border" : "bg-background/70 backdrop-blur-sm"
       )}
     >
       <nav className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid place-items-center h-9 w-9 rounded-lg bg-gradient-primary text-primary-foreground font-bold font-mono shadow-glow">
+          <span className="grid place-items-center h-9 w-9 rounded-md bg-primary text-primary-foreground font-bold font-mono">
             CP
           </span>
           <span className="hidden sm:block font-semibold tracking-tight">
@@ -55,7 +53,7 @@ export function Nav() {
           <a
             href="/resume.pdf"
             download
-            className="ml-2 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+            className="ml-2 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
           >
             Resume
           </a>
@@ -84,7 +82,7 @@ export function Nav() {
               </a>
             ))}
             <a
-              href={RESUME_URL}
+            href="/resume.pdf"
               download
               className="mt-2 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
             >

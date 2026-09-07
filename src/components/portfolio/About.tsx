@@ -1,75 +1,24 @@
 import { useReveal } from "@/hooks/use-reveal";
 import { SectionHeading } from "./SectionHeading";
 
-const stats = [
-  { value: "9M+", label: "HCP records engineered" },
-  { value: "25%", label: "Lower data processing latency" },
-  { value: "30%", label: "Reduction in system downtime" },
-  { value: "81%", label: "ML accuracy (XGBoost)" },
-];
-
 export function About() {
   const ref = useReveal();
   return (
     <section id="about" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading
-          eyebrow="01 — About"
-          title="Engineering trustworthy data, end-to-end."
-        />
-
-        <div className="grid md:grid-cols-5 gap-10 items-start">
-          <div ref={ref} className="reveal md:col-span-3 space-y-5 text-muted-foreground leading-relaxed">
-            <p>
-              I'm a data engineer turned data scientist who's spent the last four
-              years inside healthcare data — building cloud MDM ecosystems, ETL
-              pipelines, and analytics platforms for{" "}
-              <span className="text-foreground font-medium">AbbVie</span> at
-              Cognizant. I care about pipelines that don't break at 3am and
-              dashboards that actually answer the question.
-            </p>
-            <p>
-              Now at the{" "}
-              <span className="text-foreground font-medium">
-                University at Buffalo
-              </span>
-              , I'm deepening that foundation with an MS in Data Science — pairing
-              production-grade engineering with modern ML to ship systems that are
-              both reliable and intelligent.
-            </p>
-            <p>
-              I work fluently across <span className="font-mono text-primary">AWS</span>,{" "}
-              <span className="font-mono text-primary">Informatica</span>,{" "}
-              <span className="font-mono text-primary">Reltio</span>,{" "}
-              <span className="font-mono text-primary">Snowflake</span>,{" "}
-              <span className="font-mono text-primary">PySpark</span>, and{" "}
-              <span className="font-mono text-primary">Python</span>.
-            </p>
+        <SectionHeading eyebrow="01 / Profile" title="Engineering data people can trust." />
+        <div ref={ref} className="reveal grid gap-8 md:grid-cols-[1.35fr_0.65fr] md:gap-16">
+          <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
+            <p>I’m a Data Engineer with 4+ years of experience across ETL/ELT, cloud platforms, pipeline development, data quality, and analytics. At Cognizant, I helped operate and optimize a Reltio MDM ecosystem serving <strong className="font-semibold text-foreground">9M+ healthcare professional records</strong> for AbbVie.</p>
+            <p>At the University at Buffalo, I’m expanding that foundation into clinical AI—building reproducible data pipelines, predictive models, and privacy-preserving decision-support systems that remain auditable to clinicians.</p>
           </div>
-
-          <div className="md:col-span-2 grid grid-cols-2 gap-4">
-            {stats.map((s, i) => (
-              <StatCard key={s.label} value={s.value} label={s.label} delay={i * 80} />
-            ))}
-          </div>
+          <dl className="border-l-2 border-primary pl-6">
+            <div className="pb-5"><dt className="font-mono text-xs uppercase text-muted-foreground">Focus</dt><dd className="mt-1 font-semibold">Data engineering & analytics</dd></div>
+            <div className="border-t border-border py-5"><dt className="font-mono text-xs uppercase text-muted-foreground">Domain</dt><dd className="mt-1 font-semibold">Healthcare & enterprise data</dd></div>
+            <div className="border-t border-border pt-5"><dt className="font-mono text-xs uppercase text-muted-foreground">Working style</dt><dd className="mt-1 font-semibold">Reliable, measurable, collaborative</dd></div>
+          </dl>
         </div>
       </div>
     </section>
-  );
-}
-
-function StatCard({ value, label, delay }: { value: string; label: string; delay: number }) {
-  const ref = useReveal();
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className="reveal rounded-xl border border-border bg-surface/60 backdrop-blur p-5 hover:border-primary/40 transition"
-    >
-      <div className="text-3xl md:text-4xl font-bold text-gradient font-mono">
-        {value}
-      </div>
-      <div className="mt-2 text-xs text-muted-foreground leading-snug">{label}</div>
-    </div>
   );
 }

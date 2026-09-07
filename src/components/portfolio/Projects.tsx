@@ -1,95 +1,29 @@
-import { Github, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { SectionHeading } from "./SectionHeading";
 
 const projects = [
-  {
-    title: "Healthcare Admissions Analytics",
-    tag: "End-to-End Data Engineering",
-    description:
-      "Built an end-to-end OLTP→OLAP healthcare pipeline with PostgreSQL, Python, dbt, and Docker to analyze patient appointment no-show behavior. Designed normalized + star schemas and shipped a Streamlit dashboard for non-technical users.",
-    tech: ["PostgreSQL", "Python", "dbt", "Docker", "Streamlit"],
-    href: "https://github.com/Ramaseshu0",
-  },
-  {
-    title: "Early Detection of Type 2 Diabetes",
-    tag: "Machine Learning",
-    description:
-      "Trained Logistic Regression, Random Forest, and XGBoost on a 253K-record healthcare dataset, hitting 81% accuracy with XGBoost. Used ROC-AUC (0.86) and PR-AUC to handle imbalance and reduce false negatives.",
-    tech: ["Python", "scikit-learn", "XGBoost", "ROC-AUC"],
-    href: "https://github.com/Ramaseshu0",
-  },
-  {
-    title: "Cardiovascular Disease ML",
-    tag: "Machine Learning",
-    description:
-      "Built and tuned ensemble models reaching ROC-AUC 0.88 on structured clinical data. Applied feature scaling, selection, and cross-validation to surface the most influential clinical risk factors.",
-    tech: ["Python", "Random Forest", "XGBoost", "Feature Engineering"],
-    href: "https://github.com/Ramaseshu0",
-  },
+  { title: "Healthcare Admissions Analytics", type: "Data Engineering", metric: "100K+ patient records", text: "An OLTP-to-OLAP platform with 3NF and star schemas, orchestrated transformations, and advanced no-show analysis.", tech: ["PostgreSQL", "Python", "dbt", "Airflow", "Docker"], href: "https://github.com/Ramaseshu0/Healthcare-Executive-Dashboard" },
+  { title: "E-Commerce Retail Analytics", type: "Database Engineering", metric: "~60% faster queries", text: "A containerized ETL and analytics database processing ~100K orders and ~3M geolocation records with RFM segmentation.", tech: ["Python", "Pandas", "PostgreSQL", "SQLAlchemy", "Docker"], href: "https://github.com/Ramaseshu0/E-Commerce-Retail-Analytics-Database-Project" },
+  { title: "360° Enterprise Performance", type: "Business Intelligence", metric: "Executive KPI system", text: "An interactive performance dashboard connecting sales, margin, customer, product, and regional signals for decision-makers.", tech: ["Tableau", "Calculated Fields", "Data Storytelling"], href: "https://github.com/Ramaseshu0/360-Enterprise-Performance-Analytics-Superstore-Tableau" },
+  { title: "Bookshop 360° Intelligence", type: "Business Intelligence", metric: "What-if analysis", text: "A multi-stakeholder BI experience covering pricing, marketing ROI, inventory, licensing, and portfolio investment.", tech: ["Tableau", "KPI Design", "Parameters", "Analytics"], href: "https://github.com/Ramaseshu0/Bookshop-360-Business-Intelligence-Tableau-Project" },
+  { title: "Heart Disease Risk Prediction", type: "Machine Learning", metric: "5 models compared", text: "An end-to-end clinical risk pipeline with tuned classifiers and interpretable feature importance across 10+ attributes.", tech: ["Python", "XGBoost", "Random Forest", "GridSearchCV"], href: "https://github.com/Ramaseshu0/Heart-Disease-Risk-Prediction" },
+  { title: "Corporate Financial Performance", type: "Financial Analytics", metric: "Full-statement analysis", text: "A Tableau analysis of profitability, liquidity, leverage, cash flow, valuation, and market performance over time.", tech: ["Tableau", "Financial Ratios", "Time Series"], href: "https://github.com/Ramaseshu0/Financial-Performance-Analysis-Tableau" },
 ];
 
 export function Projects() {
-  return (
-    <section id="projects" className="py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading
-          eyebrow="04 — Projects"
-          title="Selected work."
-          description="Hands-on projects across data engineering, analytics, and applied machine learning."
-        />
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((p, i) => (
-            <ProjectCard key={p.title} {...p} delay={i * 80} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="projects" className="py-20 md:py-28"><div className="mx-auto max-w-6xl px-6">
+    <SectionHeading eyebrow="04 / Selected work" title="Systems that connect data to decisions." description="A focused selection spanning pipelines, databases, machine learning, and business intelligence." />
+    <div className="grid gap-px border border-border bg-border md:grid-cols-2">{projects.map((project, i) => <ProjectCard key={project.title} {...project} index={i + 1} delay={i * 50} />)}</div>
+  </div></section>;
 }
 
-function ProjectCard({
-  title,
-  tag,
-  description,
-  tech,
-  href,
-  delay,
-}: (typeof projects)[number] & { delay: number }) {
-  const ref = useReveal();
-  return (
-    <a
-      ref={ref as never}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      style={{ transitionDelay: `${delay}ms` }}
-      className="reveal group relative flex flex-col rounded-xl border border-border bg-surface/60 backdrop-blur p-6 hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow transition"
-    >
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <span className="font-mono text-xs uppercase tracking-wider text-primary">
-          {tag}
-        </span>
-        <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition" />
-      </div>
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
-      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-        {description}
-      </p>
-      <div className="mt-5 flex flex-wrap gap-2">
-        {tech.map((t) => (
-          <span
-            key={t}
-            className="font-mono text-[11px] px-2 py-0.5 rounded bg-accent/40 border border-border text-muted-foreground"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-      <div className="mt-5 flex items-center gap-2 text-xs text-muted-foreground group-hover:text-primary transition">
-        <Github className="h-4 w-4" /> View on GitHub
-      </div>
-    </a>
-  );
+function ProjectCard({ title, type, metric, text, tech, href, index, delay }: (typeof projects)[number] & { index: number; delay: number }) {
+  const ref = useReveal<HTMLAnchorElement>();
+  return <a ref={ref} href={href} target="_blank" rel="noreferrer" style={{ transitionDelay: `${delay}ms` }} className="reveal group flex min-h-80 flex-col bg-surface p-7 transition hover:bg-accent/35 md:p-9">
+    <div className="flex justify-between font-mono text-xs text-muted-foreground"><span>0{index}</span><span className="text-primary">{type}</span></div>
+    <h3 className="mt-8 max-w-md text-2xl font-bold leading-tight">{title}</h3><p className="mt-3 font-mono text-sm text-primary">{metric}</p><p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{text}</p>
+    <div className="mt-6 flex flex-wrap gap-2">{tech.map(item => <span key={item} className="border border-border px-2 py-1 font-mono text-[11px] text-muted-foreground">{item}</span>)}</div>
+    <div className="mt-7 flex items-center justify-between border-t border-border pt-5 text-sm font-semibold"><span className="flex items-center gap-2"><Github className="h-4 w-4" /> View repository</span><ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-1 group-hover:translate-x-1" /></div>
+  </a>;
 }

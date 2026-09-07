@@ -22,15 +22,15 @@ export function Contact() {
     <section id="contact" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="07 — Contact"
-          title="Let's build something great."
-          description="I'm open to data engineering, analytics, and ML roles — and to interesting collaborations."
+          eyebrow="06 / Contact"
+          title="Let’s turn complex data into useful systems."
+          description="Open to data engineering and analytics opportunities where reliability and measurable impact matter."
         />
 
         <div ref={ref} className="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <button
             onClick={copyEmail}
-            className="text-left group rounded-xl border border-border bg-surface/60 backdrop-blur p-5 hover:border-primary/40 transition"
+            className="text-left group rounded-md border border-border bg-surface p-5 hover:border-primary transition"
           >
             <div className="flex items-center gap-3 mb-3">
               <Mail className="h-5 w-5 text-primary" />
@@ -46,7 +46,7 @@ export function Contact() {
 
           <a
             href={`tel:${PHONE.replace(/\s/g, "")}`}
-            className="group rounded-xl border border-border bg-surface/60 backdrop-blur p-5 hover:border-primary/40 transition"
+            className="group rounded-md border border-border bg-surface p-5 hover:border-primary transition"
           >
             <div className="flex items-center gap-3 mb-3">
               <Phone className="h-5 w-5 text-primary" />
@@ -61,7 +61,7 @@ export function Contact() {
             href="https://github.com/Ramaseshu0"
             target="_blank"
             rel="noreferrer"
-            className="group rounded-xl border border-border bg-surface/60 backdrop-blur p-5 hover:border-primary/40 transition"
+            className="group rounded-md border border-border bg-surface p-5 hover:border-primary transition"
           >
             <div className="flex items-center gap-3 mb-3">
               <Github className="h-5 w-5 text-primary" />
@@ -73,10 +73,10 @@ export function Contact() {
           </a>
 
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/rama-seshu/"
             target="_blank"
             rel="noreferrer"
-            className="group rounded-xl border border-border bg-surface/60 backdrop-blur p-5 hover:border-primary/40 transition"
+            className="group rounded-md border border-border bg-surface p-5 hover:border-primary transition"
           >
             <div className="flex items-center gap-3 mb-3">
               <Linkedin className="h-5 w-5 text-primary" />
@@ -84,7 +84,7 @@ export function Contact() {
                 LinkedIn
               </span>
             </div>
-            <div className="text-sm font-mono">Connect</div>
+            <div className="text-sm font-mono">/in/rama-seshu</div>
           </a>
         </div>
 

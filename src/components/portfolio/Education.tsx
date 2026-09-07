@@ -1,65 +1,20 @@
-import { GraduationCap } from "lucide-react";
+import { Award, GraduationCap } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { SectionHeading } from "./SectionHeading";
 
-const items = [
-  {
-    school: "University at Buffalo",
-    degree: "M.S. in Engineering Science, Data Science",
-    period: "2026 — Present",
-    detail: "Buffalo, NY · GPA 3.5 / 4.0",
-  },
-  {
-    school: "Amrita University",
-    degree: "B.Tech in Electronics & Communication Engineering",
-    period: "2017 — 2021",
-    detail: "Bangalore, India",
-  },
+const education = [
+  { school: "University at Buffalo", degree: "M.S. Engineering Science — Data Science", period: "JAN 2025 — MAY 2026", detail: "Buffalo, NY · GPA 3.6 / 4.0" },
+  { school: "Amrita University", degree: "B.Tech — Electronics & Communication Engineering", period: "AUG 2017 — MAY 2021", detail: "Bangalore, India" },
 ];
+const certifications = ["Microsoft Certified: Power BI Data Analyst Associate · July 2026", "Microsoft Certified: Azure Databricks Data Engineer Associate · Aug 2026", "Informatica MDM Certification · Aug 2023", "Reltio MDM Configuration Specialist · Dec 2021"];
 
 export function Education() {
-  return (
-    <section id="education" className="py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading eyebrow="05 — Education" title="Foundations." />
-
-        <div className="grid md:grid-cols-2 gap-5">
-          {items.map((it, i) => (
-            <EduCard key={it.school} {...it} delay={i * 80} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function EduCard({
-  school,
-  degree,
-  period,
-  detail,
-  delay,
-}: (typeof items)[number] & { delay: number }) {
   const ref = useReveal();
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className="reveal rounded-xl border border-border bg-surface/60 backdrop-blur p-6 hover:border-primary/40 transition"
-    >
-      <div className="flex items-start gap-4">
-        <div className="grid place-items-center h-10 w-10 rounded-lg bg-gradient-primary text-primary-foreground shrink-0">
-          <GraduationCap className="h-5 w-5" />
-        </div>
-        <div className="flex-1">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="font-semibold">{school}</h3>
-            <span className="font-mono text-xs text-primary">{period}</span>
-          </div>
-          <p className="text-sm text-muted-foreground mt-1">{degree}</p>
-          <p className="text-xs text-muted-foreground mt-2 font-mono">{detail}</p>
-        </div>
-      </div>
+  return <section id="education" className="border-y border-border bg-secondary py-20 text-secondary-foreground md:py-28"><div className="mx-auto max-w-6xl px-6">
+    <SectionHeading eyebrow="05 / Credentials" title="Education and certifications." className="[&_p]:text-accent" />
+    <div ref={ref} className="reveal grid gap-12 lg:grid-cols-2">
+      <div><div className="mb-6 flex items-center gap-3 text-accent"><GraduationCap className="h-5 w-5" /><span className="font-mono text-xs uppercase">Education</span></div><div className="divide-y divide-secondary-foreground/15 border-y border-secondary-foreground/15">{education.map(item => <div key={item.school} className="py-6"><p className="font-mono text-xs text-accent">{item.period}</p><h3 className="mt-2 text-xl font-semibold">{item.school}</h3><p className="mt-1 text-sm text-secondary-foreground/70">{item.degree}</p><p className="mt-2 font-mono text-xs text-secondary-foreground/55">{item.detail}</p></div>)}</div></div>
+      <div><div className="mb-6 flex items-center gap-3 text-accent"><Award className="h-5 w-5" /><span className="font-mono text-xs uppercase">Certifications</span></div><ol className="divide-y divide-secondary-foreground/15 border-y border-secondary-foreground/15">{certifications.map((item, i) => <li key={item} className="grid grid-cols-[2rem_1fr] gap-3 py-5 text-sm leading-relaxed"><span className="font-mono text-xs text-accent">0{i + 1}</span>{item}</li>)}</ol></div>
     </div>
-  );
+  </div></section>;
 }

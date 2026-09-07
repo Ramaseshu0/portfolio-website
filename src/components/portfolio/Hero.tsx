@@ -1,79 +1,55 @@
-import { ArrowRight, Download, Mail, MapPin } from "lucide-react";
+import { ArrowDownRight, Download, Mail, MapPin } from "lucide-react";
 
-const RESUME_URL = `${import.meta.env.BASE_URL}resume.pdf`;
-const PROFILE_URL = `${import.meta.env.BASE_URL}profile.jpg`;
+const metrics = [
+  ["9M+", "Healthcare records"],
+  ["25%", "Lower latency"],
+  ["30%", "Less downtime"],
+  ["546K+", "Admissions analyzed"],
+  ["0.98", "Peak AUROC"],
+];
 
 export function Hero() {
   return (
-    <section id="top" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      {/* animated blobs */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-pulse" />
-        <div className="absolute top-40 -right-24 h-80 w-80 rounded-full bg-secondary/20 blur-3xl animate-pulse [animation-delay:1.5s]" />
-      </div>
-
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-14 items-center">
-          <div className="flex flex-col items-start gap-6 max-w-3xl order-2 md:order-1">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 backdrop-blur px-3 py-1 text-xs font-mono text-muted-foreground">
-              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              Available for Data Engineer / Data Scientist roles
+    <>
+      <section id="top" className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-[1.12fr_0.88fr]">
+          <div className="relative z-10">
+            <div className="mb-7 inline-flex items-center gap-2 border border-primary/30 bg-surface px-3 py-1.5 font-mono text-xs uppercase text-primary">
+              <span className="h-2 w-2 bg-primary" /> Open to data engineering roles
             </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
-              Hi, I'm <span className="text-gradient">Chinmaya</span>.
-              <br />
-              I build data systems that{" "}
-              <span className="text-gradient">scale</span>.
+            <p className="mb-4 font-mono text-sm uppercase text-muted-foreground">Data Engineer · Buffalo, New York</p>
+            <h1 className="max-w-4xl text-5xl font-bold leading-[1.02] sm:text-6xl md:text-7xl lg:text-[5.4rem]">
+              Chinmaya<br />Sri Rama Seshu<br />Pasupuleti<span className="text-primary">.</span>
             </h1>
-
-            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Data Engineer & Analyst with 4 years of experience designing cloud-scale
-              ETL pipelines and master-data ecosystems for healthcare. Currently pursuing
-              an MS in Data Science at the University at Buffalo.
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+              I build reliable data platforms that turn complex healthcare data into analytics-ready systems, measurable decisions, and production-grade intelligence.
             </p>
-
-            <div className="flex items-center gap-3 text-sm text-muted-foreground font-mono">
-              <MapPin className="h-4 w-4 text-primary" />
-              Buffalo, New York
+            <div className="mt-8 flex items-center gap-2 text-sm text-foreground">
+              <MapPin className="h-4 w-4 text-primary" /> Buffalo, NY · Open to relocation
             </div>
-
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 rounded-md bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-95 transition"
-              >
-                View Projects <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href={RESUME_URL}
-                download
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-surface/60 backdrop-blur px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-surface transition"
-              >
-                <Download className="h-4 w-4" /> Download Resume
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold text-foreground hover:text-primary transition"
-              >
-                <Mail className="h-4 w-4" /> Get in touch
-              </a>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90">Explore my work <ArrowDownRight className="h-4 w-4" /></a>
+              <a href="/resume.pdf" download="Chinmaya-Sri-Rama-Seshu-Pasupuleti-Resume.pdf" className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-3 text-sm font-semibold transition hover:border-primary"><Download className="h-4 w-4" /> Resume</a>
+              <a href="mailto:pramaseshu12345@gmail.com" aria-label="Email Chinmaya" className="grid h-11 w-11 place-items-center rounded-md border border-border bg-surface transition hover:border-primary hover:text-primary"><Mail className="h-4 w-4" /></a>
             </div>
           </div>
-
-          <div className="order-1 md:order-2 relative shrink-0 mx-auto md:mx-0">
-            <div className="absolute -inset-3 rounded-full bg-gradient-primary opacity-30 blur-2xl" />
-            <div className="relative h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 rounded-full overflow-hidden ring-2 ring-primary/40 ring-offset-4 ring-offset-background shadow-glow">
-              <img
-                src={PROFILE_URL}
-                alt="Chinmaya Pasupuleti"
-                className="h-full w-full object-cover"
-                loading="eager"
-              />
-            </div>
+          <div className="relative mx-auto w-full max-w-sm lg:ml-auto">
+            <div className="absolute -inset-3 translate-x-5 translate-y-5 border border-primary/35" />
+            <figure className="relative aspect-square overflow-hidden bg-secondary shadow-elevated">
+              <img src="/profile.jpg" alt="Portrait of Chinmaya Sri Rama Seshu Pasupuleti in professional attire" className="h-full w-full object-cover object-[50%_36%] scale-[1.65]" fetchPriority="high" />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-secondary/90 px-5 py-4 text-secondary-foreground backdrop-blur-sm">
+                <p className="font-mono text-xs uppercase text-accent">4+ years in data engineering</p>
+                <p className="mt-1 text-sm">Healthcare · Cloud · Analytics · ML</p>
+              </figcaption>
+            </figure>
           </div>
         </div>
+      </section>
+      <div className="border-y border-border bg-surface text-foreground">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 px-6 sm:grid-cols-3 lg:grid-cols-5">
+          {metrics.map(([value, label]) => <div key={label} className="border-border px-4 py-6 first:pl-0 lg:border-r"><p className="font-mono text-2xl font-semibold text-primary">{value}</p><p className="mt-1 text-xs text-muted-foreground">{label}</p></div>)}
+        </div>
       </div>
-    </section>
+    </>
   );
 }

@@ -5,9 +5,7 @@ export function Footer() {
         <p className="text-xs text-muted-foreground font-mono">
           © {new Date().getFullYear()} Chinmaya Sri Rama Seshu Pasupuleti
         </p>
-        <p className="text-xs text-muted-foreground font-mono">
-          Built with TanStack Start · Designed with care
-        </p>
+        <p className="text-xs text-muted-foreground font-mono">Data engineering · Analytics · Applied ML</p>
       </div>
     </footer>
   );
